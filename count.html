@@ -69,7 +69,7 @@
         <div class="wChange">
             <span id="change">02:00:00</span>
         </div>
-        <button id="start" onclick="pause()"><span>▶</span></button>
+        <button id="start"><span>▶</span></button>
 
     </div>
 
@@ -78,7 +78,9 @@
         var button = document.getElementById('start')
         var hour = 2 * 3600
         button.addEventListener('click', function () {
-            var time = setInterval(function () {
+            button = 1
+            if(button === 1) {
+                         var time = setInterval(function () {
                 if (hour <= 0) {
                     clearInterval(time)
                 }
@@ -86,8 +88,22 @@
                 var perHour = parseInt(hour / 3600, 10)
                 var minute = parseInt((hour - perHour * 3600) / 60, 10)
                 var second = hour - perHour * 3600 - minute * 60
+
+                if(perHour < 10){
+                    perHour = '0' + perHour
+                }
+                if(minute < 10){
+                    minute = '0' + minute
+                }
+                if(second < 10){
+                    second = '0' + second
+                }
+
                 change.innerText = `${perHour}:${minute}:${second}`
             }, 1000)
+            }
+
+                
         })
     </script>
 </body>
