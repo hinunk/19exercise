@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box;
+        }
+        
+        .cound {
+            display: flex;
+            justify-content: center;
+            height: 580px;
+            width: 750px;
+            background: rgb(255, 62, 19);
+            box-shadow: 0px 5px 16px black;
+            border-radius: 5px;
+        }
+        
+        .wChange {
+            width: 600px;
+            height: 230px;
+            background: rgb(44, 44, 44);
+            margin-top: 25%;
+            box-shadow: 0px 5px 16px black;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        #start {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            position: absolute;
+            margin-top: 30%;
+            background-color: rgb(255, 62, 19);
+            border: 0;
+            box-shadow: 4px 3px 13px black;
+            cursor: pointer;
+            outline: none;
+            font-size: 24px;
+            color: white;
+        }
+        
+        #start>span {
+            margin-left: 5px;
+        }
+        
+        #start:active {
+            box-shadow: 0px 2px 4px black;
+        }
+        
+        #change {
+            color: white;
+            font-size: 130px;
+            font-family: 'Frijole', cursive;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cound">
+        <div class="wChange">
+            <span id="change">02:00:00</span>
+        </div>
+        <button id="start" onclick="pause()"><span>▶</span></button>
+
+    </div>
+
+
+    <script>
+        var button = document.getElementById('start')
+        var hour = 2 * 3600
+        button.addEventListener('click', function () {
+            var time = setInterval(function () {
+                if (hour <= 0) {
+                    clearInterval(time)
+                }
+                hour -= 1
+                var perHour = parseInt(hour / 3600, 10)
+                var minute = parseInt((hour - perHour * 3600) / 60, 10)
+                var second = hour - perHour * 3600 - minute * 60
+                change.innerText = `0${perHour}:${minute}:${second}`
+            }, 1000)
+        })
+    </script>
+</body>
+
+</html>

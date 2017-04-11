@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Luckiest+Guy" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        .clock {
+            height: 300px;
+            width: 300px;
+            position: relative;
+            background-color: rgb(255,62,19);
+            box-shadow: 5px 30px 53px;
+            border-radius: 50%;
+            margin: auto;
+        }
+        
+        .hour {
+            width: 8px;
+            height: 70px;
+            background: white;
+            box-shadow: 2px 2px 8px black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 5px;
+            transform-origin: top center;
+            transform: rotate(-180deg);
+        }
+        
+        .minute {
+            width: 6px;
+            height: 100px;
+            background-color: white;
+            box-shadow: 2px 2px 8px black;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: top center;
+            border-radius: 5px;
+            transform: rotate(-180deg);
+        }
+        
+        .second {
+            transform-origin: top center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: rotate(-180deg);
+        }
+        
+        .hand {
+            width: 15px;
+            height: 15px;
+            background-color: orange;
+            border-radius: 50%;
+            box-shadow: 1px 1px 3px black;
+            position: absolute;
+            z-index: 1;
+            top: -7.5px;
+            left: -7.5px;
+        }
+        
+        .round {
+            width: 5px;
+            height: 110px;
+            background: orange;
+            box-shadow: 2px 2px 8px black;
+            position: absolute;
+            left: 50%;
+            border-radius: 2px;
+            transform: translateX(-50%);
+        }
+        
+        .Bhand {
+            width: 10px;
+            height: 20px;
+            background: orange;
+            box-shadow: 2px 2px 8px black;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -50%;
+            border-radius: 10%;
+        }
+        
+        .twelve {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            left: 50%;
+            font-family: 'Luckiest Guy', cursive;
+            top: 10px;
+            text-shadow: 0px 2px 0px black;
+            transform: translatex(-50%);
+        }
+        
+        .nine {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            left: 50%;
+            font-family: 'Luckiest Guy', cursive;
+            top: 85%;
+            text-shadow: 0px 2px 0px black;
+            transform: translateX(-50%);
+        }
+        
+        .six {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            left: 5%;
+            font-family: 'Luckiest Guy', cursive;
+            top: 50%;
+            text-shadow: 0px 2px 0px black;
+            transform: translateY(-50%);
+        }
+        
+        .three {
+            color: white;
+            font-size: 30px;
+            position: absolute;
+            left: 90%;
+            font-family: 'Luckiest Guy', cursive;
+            top: 50%;
+            text-shadow: 0px 2px 0px black;
+            transform: translateY(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="clock">
+        <div class="twelve">12</div>
+        <div class="nine">9</div>
+        <div class="six">6</div>
+        <div class="three">3</div>
+
+        <div class="minute"></div>
+        <div class="hour"></div>
+        <div class="second">
+            <div class="hand"></div>
+            <div class="round"></div>
+            <div class="Bhand"></div>
+        </div>
+    </div>
+
+
+    <script>
+        function step() {
+            var now = new Date()
+            var hours = now.getHours()
+            var minutes = now.getMinutes()
+            var seconds = now.getSeconds()
+
+            if (hours > 12) {
+                hours -= 12
+            }
+            var secondDeg = seconds / 60 * 360
+            var minuteDeg = (minutes * 60 + seconds) / 3600 * 360
+            var hourDeg = (hours * 3660 + minutes * 60 + seconds) / (12 * 3600) * 360
+
+
+            document.querySelector('.second').style.transform = `rotate(${-180 + secondDeg}deg)`
+            document.querySelector('.minute').style.transform = `rotate(${-180 + minuteDeg}deg)`
+            document.querySelector('.hour').style.transform = `rotate(${-180 + hourDeg}deg)`
+
+
+
+        }
+        step()
+        setInterval(function () {
+            step()
+        }, 1000)
+    </script>
+</body>
+
+</html>
