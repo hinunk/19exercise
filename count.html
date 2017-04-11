@@ -86,7 +86,7 @@
                 var perHour = parseInt(hour / 3600, 10)
                 var minute = parseInt((hour - perHour * 3600) / 60, 10)
                 var second = hour - perHour * 3600 - minute * 60
-                change.innerText = `0${perHour}:${minute}:${second}`
+                change.innerText = `${perHour}:${minute}:${second}`
             }, 1000)
         })
     </script>
