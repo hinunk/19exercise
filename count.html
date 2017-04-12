@@ -77,10 +77,17 @@
     <script>
         var button = document.getElementById('start')
         var hour = 2 * 3600
+        var judge = false
+
         button.addEventListener('click', function () {
-            button = 1
-            if(button === 1) {
-                         var time = setInterval(function () {
+            if(judge){
+                return
+            }
+           
+           
+          
+            setInterval(function () {
+                judge = true
                 if (hour <= 0) {
                     clearInterval(time)
                 }
@@ -89,21 +96,21 @@
                 var minute = parseInt((hour - perHour * 3600) / 60, 10)
                 var second = hour - perHour * 3600 - minute * 60
 
-                if(perHour < 10){
+                if (perHour < 10) {
                     perHour = '0' + perHour
                 }
-                if(minute < 10){
+                if (minute < 10) {
                     minute = '0' + minute
                 }
-                if(second < 10){
+                if (second < 10) {
                     second = '0' + second
                 }
 
                 change.innerText = `${perHour}:${minute}:${second}`
             }, 1000)
-            }
 
-                
+
+
         })
     </script>
 </body>
