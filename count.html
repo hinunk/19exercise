@@ -80,14 +80,12 @@
         var judge = false
 
         button.addEventListener('click', function () {
-            if(judge){
+            if (judge) {
                 return
             }
-           
-           
-          
+            judge = true
+
             setInterval(function () {
-                judge = true
                 if (hour <= 0) {
                     clearInterval(time)
                 }
