@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img {
+            max-width: 400px;
+            max-height: 400px;
+        }
+        
+        div {
+            display: flex;
+            width: 400px;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+        <img data-src="http://i2.muimg.com/567571/8aab55f3930b19fc.jpg" src="http://i1.piimg.com/567571/b4e84c527f77cf83.png" alt="">
+        <img data-src="http://i4.buimg.com/567571/e629ca1c43eb3a37.jpg" src="http://i1.piimg.com/567571/b4e84c527f77cf83.png" alt="">
+        <img data-src="http://i2.muimg.com/567571/f226386d865cfcad.jpg" src="http://i1.piimg.com/567571/b4e84c527f77cf83.png" alt="">
+        <img data-src="http://i1.piimg.com/567571/e4e6859d720308f0.jpg" src="http://i1.piimg.com/567571/b4e84c527f77cf83.png" alt="">
+
+    </div>
+
+    <script>
+        var 图片 = document.getElementsByTagName('img')
+
+        for (var i = 0; i < 图片.length; i++) {
+
+            let 第一个图片 = 图片[i]
+            let url = 第一个图片.getAttribute('data-src')
+
+            let objimg = new Image()
+            objimg.src = url
+
+            第一个图片.onload = function () {
+                第一个图片.src = url
+            }
+        }
+    </script>
+</body>
+
+</html>
