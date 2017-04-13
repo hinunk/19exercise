@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .triangle::after {
+            content: "▼";
+            font-size: 12px;
+            
+        }
+
+    </style>
+</head>
+
+<body>
+    <select name="" id="selector">
+        <option value="1">选择1</option>
+        <option value="2">选择2</option>
+        <option value="3">选择3</option>
+        <option value="4">选择4</option>
+        <option value="5">选择5</option>
+    </select>
+
+    <script>
+        // var select = document.querySelector('#selector')
+        // var div1 = document.createElement('div')
+        // div1.innerHTML = select.outerHTML
+        // document.body.insertBefore(div1,select)
+
+
+        var select = document.querySelector('#selector')
+        var div1 = document.createElement('div')
+        div1.innerHTML = select.outerHTML
+        select.parentNode.insertBefore(div1, select)
+        select.remove()
+        div1.style.display = 'inline-block'
+        div1.style.position = 'relative'
+
+        var div2 = document.createElement('div')
+        div1.appendChild(div2)
+        div2.style.border = '1px solid #ddd'
+        div2.style.position = 'absolute'
+        div2.style.width = '100%'
+        div2.style.height = '100%'
+        div2.style.top = 0
+        div2.style.left = 0
+        div2.innerHTML = '选择'
+        div2.className = 'triangle'
+
+        var select = div1.querySelector('#selector')
+        select.style.position = 'relative'
+        select.style.zIndex = 1
+        select.style.opacity = 0
+
+        select.addEventListener('change',function(){
+
+            let option = div1.querySelector(`select>option[value="${this.value}"]`)
+            div2.innerHTML = option.innerText
+        })
+    </script>
+</body>
+
+</html>
