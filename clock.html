@@ -164,12 +164,7 @@
             var minuteDeg = (minutes * 60 + seconds) / 3600 * 360
             var hourDeg = (hours * 3660 + minutes * 60 + seconds) / (12 * 3600) * 360
 
-            
-            var s1 = document.querySelector('.second').style.transform
-            var index = s1.indexOf('(')
-            var index2 = s1.lastindexOf('deg)')
-            var ns = s1.slice(index,index2)
-            console.log(ns)
+        
 
             document.querySelector('.second').style.transform = `rotate(${-180 + secondDeg}deg)`
             document.querySelector('.minute').style.transform = `rotate(${-180 + minuteDeg}deg)`
